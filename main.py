@@ -5,6 +5,7 @@ from pydantic import BaseModel
 import hashlib
 from sqlalchemy.orm import sessionmaker
 import datetime
+from fastapi.middleware.cors import CORSMiddleware
 
 models.database.Base.metadata.create_all(bind=engine)
 Session = sessionmaker(autoflush=False, autocommit=False, bind=engine)
@@ -15,6 +16,15 @@ Session = sessionmaker(autoflush=False, autocommit=False, bind=engine)
 session = Session()
 app = FastAPI()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class DonorsFields(BaseModel):
     fullName : str
