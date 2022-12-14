@@ -58,5 +58,12 @@ def getemail(email: str):
     return data
 
 
+@app.post("/api/plasma/updateavailibility")
+def getemail(email: str,availibility : int):
+    verificationQuery = engine.execute("UPDATE Donors set availability='"+availibility+"' where emailId='"+email+"'")
+    data = verificationQuery.fetchone()
+    return data
+
+
 
 
