@@ -11,8 +11,8 @@ class Donors(database.Base):
     emailId = Column(String, unique=True)
     bloodGroup = Column(String)
     contactNo = Column(String)
-    eligibility = Column(String)
-    availability = Column(String)
+    eligibility = Column(Integer)
+    availability = Column(Integer)
 
     def __init__(self, name, age, mobile, email, eligibility, availability, bloodGroup):
         self.fullName = name
