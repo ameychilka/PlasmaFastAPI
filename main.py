@@ -31,8 +31,8 @@ class DonorsFields(BaseModel):
     age : int
     contactNo : str
     emailId : str
-    eligibility : str
-    availability : str
+    eligibility : int
+    availability : int
     bloodGroup : str
 
 
@@ -60,7 +60,7 @@ def getemail(email: str):
 
 @app.post("/api/plasma/updateavailibility")
 def getemail(email: str,availibility : int):
-    verificationQuery = engine.execute("UPDATE Donors set availability='"+str(availibility)+"' where emailId='"+email+"'")
+    verificationQuery = engine.execute("UPDATE Donors set availability = 1 where emailId='"+email+"'")
     return True
 
 
